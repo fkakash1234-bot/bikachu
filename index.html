@@ -1,26 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bikachu AI</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
 <body>
 
 <div class="container">
 
-  <div class="header">
-    <h1>Bikachu AI 🤖</h1>
-    <p>Your AI Assistant</p>
-  </div>
+<div class="header">
+<h1>🤖 Bikachu AI</h1>
+<p>Your AI Assistant</p>
+</div>
 
-  <div id="chat"></div>
+<div id="chat"></div>
 
-  <div class="inputBox">
-    <input
-      type="text"
-      id="message"
-      placeholder="Type a message..."
-    >
+<div class="inputBox">
+<input
+id="message"
+type="text"
+placeholder="Type a message..."
+>
 
-    <button onclick="sendMessage()">Send</button>
-  </div>
+<button onclick="sendMessage()">
+Send
+</button>
+</div>
 
 </div>
 
+<script src="config.js"></script>
 <script src="app.js"></script>
 
 </body>
+</html>
