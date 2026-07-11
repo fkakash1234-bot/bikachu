@@ -1,4 +1,4 @@
-const API_KEY = "YOUR_OPENAI_API_KEY";
+const API_KEY = "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";
 
 async function sendMessage() {
     const input = document.getElementById("message");
