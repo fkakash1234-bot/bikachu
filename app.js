@@ -5,10 +5,26 @@ async function sendMessage() {
   const message = input.value.trim();
   if (!message) return;
 
-  chat.innerHTML += `<div class="user"><b>You:</b> ${message}</div>`;
+  // User message
+  chat.innerHTML += `
+    <div class="user-message">
+      <b>🧑 You:</b> ${message}
+    </div>
+  `;
+
   input.value = "";
 
+  // Loading
+  chat.innerHTML += `
+    <div id="loading" class="bot-message">
+      ⏳ Bikachu AI is thinking...
+    </div>
+  `;
+
+  chat.scrollTop = chat.scrollHeight;
+
   try {
+
     const response = await fetch("https://bikachu.fkakash1234.workers.dev", {
       method: "POST",
       headers: {
@@ -21,16 +37,39 @@ async function sendMessage() {
 
     const data = await response.json();
 
-    chat.innerHTML += `<div class="bot"><b>Bikachu AI:</b> ${data.reply}</div>`;
+    document.getElementById("loading").remove();
+
+    chat.innerHTML += `
+      <div class="bot-message">
+        🤖 <b>Bikachu AI:</b><br>
+        ${data.reply}
+      </div>
+    `;
+
     chat.scrollTop = chat.scrollHeight;
 
-  } catch (err) {
-    chat.innerHTML += `<div class="bot"><b>Error:</b> ${err.message}</div>`;
+  } catch (error) {
+
+    const loading = document.getElementById("loading");
+    if (loading) loading.remove();
+
+    chat.innerHTML += `
+      <div class="bot-message">
+        ❌ Error:<br>
+        ${error.message}
+      </div>
+    `;
+
   }
+
 }
 
 document.getElementById("send").addEventListener("click", sendMessage);
 
-document.getElementById("message").addEventListener("keypress", function(e) {
-  if (e.key === "Enter") sendMessage();
+document.getElementById("message").addEventListener("keypress", function(e){
+
+    if(e.key==="Enter"){
+        sendMessage();
+    }
+
 });
