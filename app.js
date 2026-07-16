@@ -9,7 +9,7 @@ async function sendMessage() {
   input.value = "";
 
   try {
-    const response = await fetch("YOUR_BACKEND_URL", {
+    const response = await fetch("https://bikachu.fkakash1234.workers.dev", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
