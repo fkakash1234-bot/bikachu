@@ -21,11 +21,6 @@ async function sendMessage() {
 
     const data = await response.json();
 
-    if (data.error) {
-      chat.innerHTML += `<div class="bot"><b>Error:</b> ${data.error}</div>`;
-      return;
-    }
-
     chat.innerHTML += `<div class="bot"><b>Bikachu AI:</b> ${data.reply}</div>`;
     chat.scrollTop = chat.scrollHeight;
 
@@ -36,8 +31,6 @@ async function sendMessage() {
 
 document.getElementById("send").addEventListener("click", sendMessage);
 
-document.getElementById("message").addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    sendMessage();
-  }
+document.getElementById("message").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") sendMessage();
 });
